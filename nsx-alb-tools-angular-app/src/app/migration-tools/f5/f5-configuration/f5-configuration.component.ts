@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { ClrFormLayout } from '@clr/angular';
 import * as l10n from './f5-configuration.l10n';
-import { HttpService } from 'src/app/shared/http/http.service';
-import { ClrWizard } from "@clr/angular";
-
+import { ConfigurationTabService } from 'src/app/shared/configuration-tab-response-data/configuration-tab-response-data.service';
 
 const { ENGLISH: dictionary, ...l10nKeys } = l10n;
 
@@ -15,13 +10,31 @@ const { ENGLISH: dictionary, ...l10nKeys } = l10n;
 })
 export class F5ConfigurationComponent implements OnInit {
 
-    dictionary = dictionary;
+  dictionary = dictionary;
 
-    constructor(
-        private http: HttpService,
-    ) {}
+  public isOpenVsConfigEditorModal = false;
 
-    ngOnInit(): void {
-    }
+  public vsConfig: any;
+
+  constructor(
+    private readonly configurationTabService: ConfigurationTabService,
+  ) { }
+
+  /** @override */
+  public async ngOnInit(): Promise<void> {
+    this.vsConfig = await this.configurationTabService.getAllIncompleteVSMigrationData();
+  }
+
+  public refreshInIncompleteVSData(): void {
+
+  }
+
+  public openVsConfigEditorModal(): void {
+    this.isOpenVsConfigEditorModal = true;
+  }
+
+  public closeVsConfigEditorModal(): void {
+    this.isOpenVsConfigEditorModal = false;
+  }
 
 }

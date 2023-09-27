@@ -1,3 +1,13 @@
 <h1>
     {{ dictionary.configurationPageTitle }}
 </h1>
+
+
+<button type="button" class="btn btn-outline" (click)="openVsConfigEditorModal()">Open</button>
+
+
+<vs-config-editor-modal
+    *ngIf="isOpenVsConfigEditorModal && vsConfig"
+    [vsConfig]="vsConfig[0]"
+    (onCloseVsConfigEditorModal)="closeVsConfigEditorModal()"
+></vs-config-editor-modal>
