@@ -11,7 +11,7 @@ export class ConfigurationTabService {
     private http: HttpService,
   ) {}
 
-  public getAllIncompleteVSMigrationData(): Observable<incompleteVsMigration[]> {
+  public getAllIncompleteVSMigrationsData(): Observable<incompleteVsMigration[]> {
     return this.http.get('configTab/getAllIncompleteVSMigrationData');
 
   }

@@ -5,10 +5,12 @@ import {
     twoWayArrowsIcon,
     vmBugIcon,
     barsIcon,
+    checkboxListIcon,
 } from '@cds/core/icon';
 
 const clarityIcons = [
     userIcon,
+    checkboxListIcon,
     vmBugIcon,
     twoWayArrowsIcon,
     barsIcon,

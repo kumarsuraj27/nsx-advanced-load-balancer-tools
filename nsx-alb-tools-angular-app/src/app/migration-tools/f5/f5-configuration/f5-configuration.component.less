@@ -1,5 +1,62 @@
-
 h6:not([cds-text]) {
     padding-bottom: 0.6rem;
     color: #0072A3;
+}
+
+.f5-configuration {
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    &__cards {
+        // max-height: 50%;
+        // height: 50%;
+        // overflow: auto;
+    }
+
+    &__grid {
+        // height: 50%;
+        // max-height: 50%;
+        // overflow: auto;
+    }
+
+    &__grid {
+        // height: 50%;
+        // max-height: 50%;
+        // overflow: auto;
+    }
+
+    // Clarity overrides
+    .clr-control-container .clr-form-control {
+        .clr-input {
+            width: 100%;
+            font-size: 0.7rem;
+
+            // Overriding avi input styling.
+            &[type=password],
+            &[type=number],
+            &[type=text],
+            &[type=email],
+            &[type=time],
+            &:not([type]) {
+                font-family: inherit;
+
+                &[disabled] {
+                    border: 0;
+                    border-bottom: 1px solid grey;
+                    background: initial;
+                    color: black;
+                }
+
+                &::placeholder {
+                    color: inherit;
+                }
+            }
+        }
+
+        .clr-control-label {
+            display: none;
+        }
+    }
 }

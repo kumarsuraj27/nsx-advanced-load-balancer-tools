@@ -22,6 +22,7 @@ import { F5CompletedComponent } from './migration-tools/f5/f5-completed/f5-compl
 import { ConfigEditorComponent } from './migration-tools/f5/f5-configuration/config-editor/config-editor.component';
 import { VsConfigEditorModalComponent } from './migration-tools/f5/f5-configuration/vs-config-editor-modal/vs-config-editor-modal.component';
 import { GenericConfigEditorModalComponent } from './migration-tools/f5/f5-configuration/generic-config-editor-modal /generic-config-editor-modal.component';
+import { IncompleteMigrationsGridComponent } from './migration-tools/f5/f5-configuration/incomplete-migrations-grid/incomplete-migrations-grid.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { GenericConfigEditorModalComponent } from './migration-tools/f5/f5-confi
     F5ReadyComponent,
     F5ReportComponent,
     GenericConfigEditorModalComponent,
+    IncompleteMigrationsGridComponent,
     LandingPageComponent,
     StartWizardComponent,
     VsConfigEditorModalComponent,
