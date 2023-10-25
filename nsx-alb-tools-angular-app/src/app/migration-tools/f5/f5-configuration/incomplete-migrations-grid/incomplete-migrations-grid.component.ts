@@ -17,7 +17,7 @@ const { ENGLISH: dictionary } = l10n;
 })
 export class IncompleteMigrationsGridComponent {
   @Input()
-  public incompleteMigrationsData: incompleteVsMigration[] = [];
+  public incompleteMigrationsData: any[] = [];
 
   @Output()
   public onRefreshIncompleteMigrationsData = new EventEmitter<boolean>();

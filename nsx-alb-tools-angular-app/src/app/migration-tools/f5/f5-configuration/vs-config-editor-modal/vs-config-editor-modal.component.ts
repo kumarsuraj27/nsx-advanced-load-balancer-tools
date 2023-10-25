@@ -23,7 +23,7 @@ const { ENGLISH: dictionary } = l10n;
 })
 export class VsConfigEditorModalComponent {
   @Input()
-  public vsConfig: incompleteVsMigration;
+  public vsConfig: any;
 
   @Output()
   public onCloseVsConfigEditorModal = new EventEmitter<boolean>();

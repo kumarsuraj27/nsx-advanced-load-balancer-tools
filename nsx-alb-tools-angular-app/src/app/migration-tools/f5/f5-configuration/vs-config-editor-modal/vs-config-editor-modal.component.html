@@ -1,6 +1,6 @@
 <div class="vs-config-editor-modal">
     <clr-modal [(clrModalOpen)]="isOpen" [clrModalSize]="'xl'" *ngIf="vsConfig">
-        <h3 class="modal-title">{{ vsConfig.vsName }} {{ dictionary.editorLabel }}</h3>
+        <h3 class="modal-title">{{ vsConfig.F5_ID }} {{ dictionary.editorLabel }}</h3>
 
         <div class="modal-body">
             <div class="alert-section" *ngIf="vsConfig.flaggedObjects.length">
@@ -8,15 +8,15 @@
                     <clr-alert-item>
                         <span class="alert-text">{{ dictionary.editorAlertMessage }}</span>
                         <div class="alert-actions">
-                            <span class="alert-action" (click)="openChildConfigEditorModal(config)" *ngIf="config.needReview">{{ dictionary.reviewNowLabel }}</span>
+                            <span class="alert-action" (click)="openChildConfigEditorModal(config)">{{ dictionary.reviewNowLabel }}</span>
                         </div>
                     </clr-alert-item>
                 </clr-alert>
             </div>
             <config-editor
                 *ngIf="isOpen"
-                [leftSectionConfig]="vsConfig.F5Obj"
-                [rightSectionConfig]="vsConfig.aviObj"
+                [leftSectionConfig]="vsConfig.F5_Object"
+                [rightSectionConfig]="vsConfig.Avi_Object"
                 (isConfigEditorValid)="handleVsConfigEditorValidationChange($event)"
             ></config-editor>
         </div>
@@ -30,7 +30,7 @@
 
 <generic-config-editor-modal
     *ngIf="isOpenChildConfigEditorModal"
-    [vsName]="vsConfig.vsName"
+    [vsName]="childConfigEditorConfig.F5_ID"
     [config]="childConfigEditorConfig"
     (onCloseGeneralConfigEditorModal)="handleCloseChildConfigEditorModal($event)"
 ></generic-config-editor-modal>

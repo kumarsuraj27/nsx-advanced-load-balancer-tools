@@ -24,9 +24,9 @@ const { ENGLISH: dictionary } = l10n;
   styleUrls: ['./f5-configuration.component.less'],
 })
 export class F5ConfigurationComponent implements OnInit {
-  public incompleteMigrationsData: incompleteVsMigration[] = [];
+  public incompleteMigrationsData: any[] = [];
 
-  public selectedMigrationData: incompleteVsMigration;
+  public selectedMigrationData: any;
 
   public labControllerDetails: labController;
 
@@ -91,8 +91,8 @@ export class F5ConfigurationComponent implements OnInit {
     const fetchFromController$ = this.configurationTabService.fetchFromController();
     const allVSMigrationsData: incompleteVsMigrationsData = await lastValueFrom(fetchFromController$);
 
-    this.incompleteMigrationsData = allVSMigrationsData.incompleteVSMigrationsData;
-    this.completedVSMigrationsCount = allVSMigrationsData.completedVSMigrationsCount;
+    //this.incompleteMigrationsData = allVSMigrationsData.incompleteVSMigrationsData;
+    //this.completedVSMigrationsCount = allVSMigrationsData.completedVSMigrationsCount;
     this.configurationTabService.showCompletedMigrationsCountAlert = true;
   }
 
@@ -107,8 +107,9 @@ export class F5ConfigurationComponent implements OnInit {
 
   private async getAllIncompleteVSMigrationsData(): Promise<void> {
     const allVSMigrationsData$ = this.configurationTabService.getAllIncompleteVSMigrationsData();
-    const allVSMigrationsData: incompleteVsMigrationsData = await lastValueFrom(allVSMigrationsData$);
-    this.incompleteMigrationsData = allVSMigrationsData.incompleteVSMigrationsData;
+    const allVSMigrationsData: any = await lastValueFrom(allVSMigrationsData$);
+
+    this.incompleteMigrationsData = allVSMigrationsData;
     this.selectedMigrationData = this.incompleteMigrationsData[this.selectedMigrationIndex];
   }
 

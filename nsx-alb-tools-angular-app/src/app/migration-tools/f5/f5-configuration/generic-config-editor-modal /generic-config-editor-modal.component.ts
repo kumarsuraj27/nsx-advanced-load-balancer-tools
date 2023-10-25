@@ -17,9 +17,6 @@ const { ENGLISH: dictionary } = l10n;
 })
 export class GenericConfigEditorModalComponent {
   @Input()
-  public vsName: string;
-
-  @Input()
   public config: vsFlaggedObject | undefined;
 
   @Output()
