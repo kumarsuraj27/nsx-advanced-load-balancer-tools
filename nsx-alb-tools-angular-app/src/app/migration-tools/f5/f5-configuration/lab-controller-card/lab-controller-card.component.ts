@@ -20,6 +20,9 @@ const { ENGLISH: dictionary } = l10n;
   styleUrls: ['./lab-controller-card.component.less']
 })
 export class LabControllerCardComponent implements OnInit {
+  @Input()
+  public isFetchInProgress = false;
+
   @Output()
   public onFetch = new EventEmitter<void>();
 
@@ -31,6 +34,8 @@ export class LabControllerCardComponent implements OnInit {
 
   public openEditModal = false;
 
+  public isLabControllerDetailsValid = false;
+
   public readonly verticalLayout = ClrFormLayout.VERTICAL;
 
   public dictionary = dictionary;
@@ -39,18 +44,32 @@ export class LabControllerCardComponent implements OnInit {
 
   /** @override */
   public async ngOnInit(): Promise<void> {
-    const labControllerDetails$ = this.configurationTabService.getLabControllerDetails();
-    this.labControllerDetails = await lastValueFrom(labControllerDetails$);
+    await this.fetchLabControllerDetails();
+    this.validateLabControllerDetails();
   }
 
   public async handleCloseEditModal(getDetails: boolean): Promise<void> {
     if (getDetails) {
-      const labControllerDetails$ = this.configurationTabService.getLabControllerDetails();
-      this.labControllerDetails = await lastValueFrom(labControllerDetails$);
+      await this.fetchLabControllerDetails();
+      this.validateLabControllerDetails();
     }
 
     this.openEditModal = false;
   }
+
+  public async fetchLabControllerDetails(): Promise<void> {
+    const labControllerDetails$ = this.configurationTabService.getLabControllerDetails();
+
+    this.labControllerDetails = await lastValueFrom(labControllerDetails$);
+  }
+
+
+  public validateLabControllerDetails(): void {
+    const { avi_lab_user, avi_lab_password, avi_lab_ip } = this.labControllerDetails;
+
+    this.isLabControllerDetailsValid = Boolean(avi_lab_user && avi_lab_password && avi_lab_ip);
+  }
+
 
   public handleEdit(): void {
     if (this.labControllerDetails) {

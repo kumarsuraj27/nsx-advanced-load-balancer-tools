@@ -14,6 +14,9 @@ export class NextConversionCardComponent {
   @Input()
   public selectedMigrationData: incompleteVsMigration | undefined;
 
+  @Input()
+  public isFetchInProgress = false;
+
   @Output()
   public onSkip = new EventEmitter<void>();
 
